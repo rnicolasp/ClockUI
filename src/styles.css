@@ -1,46 +1,39 @@
 /* src/styles.css */
 :root {
-  --primary-color: #6200ea; /* Purple */
-  --secondary-color: #03dac6; /* Teal */
-  --background-light: #ffffff;
-  --text-light: #000000;
-  --background-dark: #121212;
-  --text-dark: #ffffff;
+  --primary-color: #bb86fc; /* Morat clar per al mode fosc */
+  --secondary-color: #03dac6; /* Turquesa */
+  --background-dark: #121212; /* Fons fosc */
+  --text-dark: #ffffff; /* Text clar */
+  --navbar-height: 60px; /* Alçada del navbar */
   --font-family: 'Roboto', sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--background-dark);
-    --text: var(--text-dark);
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: var(--background-light);
-    --text: var(--text-light);
-  }
 }
 
 body {
   font-family: var(--font-family);
-  background-color: var(--background);
-  color: var(--text);
+  background-color: var(--background-dark);
+  color: var(--text-dark);
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
 }
 
+/* Navbar fixat a la part superior */
 nav {
-  background-color: var(--primary-color);
+  background-color: var(--background-dark);
   color: var(--text-dark);
   width: 100%;
-  padding: 1rem;
+  height: var(--navbar-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 nav ul {
@@ -49,6 +42,8 @@ nav ul {
   justify-content: space-around;
   padding: 0;
   margin: 0;
+  width: 100%;
+  max-width: 800px;
 }
 
 nav ul li a {
@@ -56,52 +51,85 @@ nav ul li a {
   text-decoration: none;
   display: flex;
   align-items: center;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.25rem;
 }
 
 nav ul li a .material-icons {
   margin-right: 0.5rem;
 }
 
+/* Contingut principal */
 main {
   width: 100%;
   max-width: 800px;
   padding: 1rem;
+  margin-top: var(--navbar-height); /* Espai per al navbar fixat */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* Ocupa tot l'espai disponible */
 }
 
 section {
   margin-bottom: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 h2 {
   color: var(--primary-color);
+  margin-bottom: 1rem;
 }
 
 x-clock, x-alarm, x-stopwatch, x-timer {
   display: block;
   margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
 }
 
 time {
   font-size: 2rem;
   font-weight: bold;
+  display: block;
+  margin-bottom: 1rem;
 }
 
+/* Contenidor dels botons */
 .controls {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: center; /* Centra el contenidor horitzontalment */
+  gap: 1rem; /* Espai entre botons */
   margin-top: 1rem;
+  width: 100%; /* Ocupa tot l'amplada disponible */
 }
 
+/* Estils dels botons */
 button {
-  background-color: var(--secondary-color);
-  color: var(--text-dark);
+  background-color: var(--primary-color);
+  color: var(--background-dark);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
   display: flex;
   align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #8d30ff; /* Turquesa més fosc */
 }
 
 button .material-icons {
@@ -112,6 +140,8 @@ input[type="time"] {
   padding: 0.5rem;
   border-radius: 0.25rem;
   border: 1px solid var(--primary-color);
+  background-color: var(--background-dark);
+  color: var(--text-dark);
 }
 
 @media (max-width: 600px) {
@@ -122,5 +152,10 @@ input[type="time"] {
 
   time {
     font-size: 1.5rem;
+  }
+
+  /* En pantalles petites, els botons es poden ajustar */
+  .controls {
+    flex-wrap: wrap; /* Permet que els botons es moguin a una nova línia si no hi ha espai */
   }
 }
