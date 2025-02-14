@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+    <link rel="icon" type="image/png" href="./src/assets/logo.png" />
+  </head>
+  <body>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#clock" aria-label="Clock"><span class="material-icons">access_time</span>Clock</a></li>
+        <li><a href="#alarm" aria-label="Alarm"><span class="material-icons">alarm</span>Alarm</a></li>
+        <li><a href="#stopwatch" aria-label="Stopwatch"><span class="material-icons">timer</span>Stopwatch</a></li>
+        <li><a href="#timer" aria-label="Timer"><span class="material-icons">hourglass_empty</span>Timer</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section id="clock" aria-labelledby="clock-heading">
+        <h2 id="clock-heading">Clock</h2>
+        <x-clock>
+          <time>00:00:00</time>
+        </x-clock>
+      </section>
+      <section id="alarm" aria-labelledby="alarm-heading" style="display: none;">
+        <h2 id="alarm-heading">Alarm</h2>
+        <x-alarm>
+          <template>
+            <section class="alarms">
+              <input type="time" min="00:00" max="23:59" step="1" aria-label="Set alarm time" />
+              <section class="controls">
+                <button class="start material-icons" aria-label="Start alarm">alarm_on</button>
+                <button class="pause material-icons" aria-label="Pause alarm">alarm_off</button>
+                <button class="delete material-icons" aria-label="Delete alarm">delete</button>
+              </section>
+            </section>
+          </template>
+          <section class="items"></section>
+          <section class="controls">
+            <button class="add material-icons" aria-label="Add new alarm">add_alarm</button>
+          </section>
+        </x-alarm>
+      </section>
+      <section id="stopwatch" aria-labelledby="stopwatch-heading" style="display: none;">
+        <h2 id="stopwatch-heading">Stopwatch</h2>
+        <x-stopwatch>
+          <time datetime="PT0S">00:00:00.00</time>
+          <section class="controls">
+            <button class="start material-icons" aria-label="Start stopwatch">timer</button>
+            <button class="pause material-icons" aria-label="Pause stopwatch">timer_off</button>
+            <button class="restart material-icons" aria-label="Restart stopwatch">restart_alt</button>
+          </section>
+        </x-stopwatch>
+      </section>
+      <section id="timer" aria-labelledby="timer-heading" style="display: none;">
+        <h2 id="timer-heading">Timer</h2>
+        <x-timer>
+          <time datetime="PT0S">00:00:00.00</time>
+          <section class="items">
+            <input type="time" min="00:00" max="23:59" step="1" value="00:03" aria-label="Set timer time" />
+            <input type="time" min="00:00" max="23:59" step="1" value="00:01" aria-label="Set timer time" />
+          </section>
+          <section class="controls">
+            <button class="start material-icons" aria-label="Start timer">timer</button>
+            <button class="pause material-icons" aria-label="Pause timer">timer_off</button>
+            <button class="restart material-icons" aria-label="Restart timer">restart_alt</button>
+            <button class="loop material-icons" aria-label="Enable loop">loop</button>
+            <button class="no-loop material-icons" aria-label="Disable loop">sync_disabled</button>
+          </section>
+        </x-timer>
+      </section>
+    </main>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

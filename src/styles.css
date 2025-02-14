@@ -1,0 +1,126 @@
+/* src/styles.css */
+:root {
+  --primary-color: #6200ea; /* Purple */
+  --secondary-color: #03dac6; /* Teal */
+  --background-light: #ffffff;
+  --text-light: #000000;
+  --background-dark: #121212;
+  --text-dark: #ffffff;
+  --font-family: 'Roboto', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--background-dark);
+    --text: var(--text-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: var(--background-light);
+    --text: var(--text-light);
+  }
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+nav {
+  background-color: var(--primary-color);
+  color: var(--text-dark);
+  width: 100%;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  color: var(--text-dark);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li a .material-icons {
+  margin-right: 0.5rem;
+}
+
+main {
+  width: 100%;
+  max-width: 800px;
+  padding: 1rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  color: var(--primary-color);
+}
+
+x-clock, x-alarm, x-stopwatch, x-timer {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+time {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+button {
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+button .material-icons {
+  margin-right: 0.5rem;
+}
+
+input[type="time"] {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--primary-color);
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  time {
+    font-size: 1.5rem;
+  }
+}
